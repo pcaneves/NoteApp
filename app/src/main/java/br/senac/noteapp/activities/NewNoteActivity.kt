@@ -2,6 +2,8 @@ package br.senac.noteapp.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import br.senac.noteapp.data.Note
+import br.senac.noteapp.data.Notes
 import br.senac.noteapp.databinding.ActivityNewNoteBinding
 
 class NewNoteActivity : AppCompatActivity() {
@@ -12,6 +14,11 @@ class NewNoteActivity : AppCompatActivity() {
         binding = ActivityNewNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnAdd.setOnClickListener {
+            val note = Note(binding.etTitle.text.toString(), binding.etDesc.text.toString())
+            Notes.listNotes.add(note)
+            finish()
+        }
     }
 
 }
